@@ -190,9 +190,31 @@
   }
 
   function updateProjectSummary(state, estimate) {
+    ... // keep existing
+    // Garante que o resumo aparece quando há interação
+    if (state && (state.pages || state.features || state.type)) {
+      var linesEl2 = summary.querySelector('.summary-lines');
+      if (linesEl2) linesEl2.style.display = 'flex';
+      var est2 = summary.querySelector('.summary-estimate');
+      if (est2) est2.style.display = 'flex';
+    }
+    ...
     var summary = document.getElementById('project-summary');
     if (!summary) return;
     var typeName = state.type && P.TYPES[state.type] ? P.TYPES[state.type].name : '—';
+
+    // Se ainda não selecionou nada, esconde linhas vazias
+    if (!state.type && (!state.pages || !state.pages.length) && (!state.features || !state.features.length)) {
+      var linesEl = summary.querySelector('.summary-lines');
+      if (linesEl) linesEl.style.display = 'none';
+      var est = summary.querySelector('.summary-estimate');
+      if (est) est.style.display = 'none';
+    } else {
+      var linesEl2 = summary.querySelector('.summary-lines');
+      if (linesEl2) linesEl2.style.display = 'flex';
+      var est2 = summary.querySelector('.summary-estimate');
+      if (est2) est2.style.display = 'flex';
+    }
 
     var elType = document.getElementById('summary-type-label');
     if (elType) elType.textContent = typeName || 'Projeto';
@@ -216,23 +238,10 @@
     if (elExtras) elExtras.textContent = namesFrom(P.EXTRAS, state.extras) || '—';
 
     var elBadge = document.getElementById('summary-complexity');
-    if (elBadge) {
-      var badgeText = (estimate.complexity && estimate.complexity.label) ? estimate.complexity.label : '—';
-      elBadge.textContent = badgeText;
-      elBadge.style.display = (state.type || (state.pages && state.pages.length > 0) || (state.features && state.features.length > 0)) ? 'inline-block' : 'none';
-    }
+    if (elBadge) elBadge.textContent = (estimate.complexity && estimate.complexity.label) || '—';
 
     var estVal = summary.querySelector('.estimate-value');
     if (estVal) estVal.textContent = estimate.total ? 'R$ ' + P.formatBRL(estimate.total) : 'R$ —';
-
-    // Controlar visibilidade do resumo
-    var hasContent = state.type || (state.pages && state.pages.length > 0) || (state.features && state.features.length);
-    var linesEl = summary.querySelector('.summary-lines');
-    if (linesEl) linesEl.style.display = hasContent ? 'flex' : 'none';
-    var estEl = summary.querySelector('.summary-estimate');
-    if (estEl) estEl.style.display = hasContent ? 'flex' : 'none';
-    var headerEl = summary.querySelector('.summary-header');
-    if (headerEl) headerEl.style.display = hasContent ? 'flex' : 'none';
 
     var rangeEl = document.getElementById('price-range');
     if (rangeEl) {
@@ -249,29 +258,6 @@
     mock.setAttribute('data-tier', tier);
     setText('mini-tier-label', tierLabel(tier));
     unlockEvolution(tier);
-
-    // Atualização visual baseada nos recursos selecionados
-    var state = getStateFromUI();
-    var features = state.features || [];
-    var pages = state.pages || [];
-
-    // Mostrar/ocultar elementos do preview conforme recursos
-    var hasWhatsApp = features.indexOf('whatsapp') !== -1;
-    var hasForm = features.indexOf('formulario') !== -1;
-    var hasLogin = features.indexOf('login') !== -1;
-    var hasAgenda = features.indexOf('agendamento') !== -1;
-    var hasAdmin = features.indexOf('admin') !== -1;
-    var hasDB = features.indexOf('database') !== -1;
-
-    // Ajustar conteúdo dinâmico do preview
-    var heroTitle = mock.querySelector('.mini-hero-content h1');
-    if (heroTitle) {
-      if (tier === 'premium') heroTitle.textContent = 'Sistema completo — pronto para operar';
-      else if (tier === 'advanced') heroTitle.textContent = 'Projeto avançado em construção';
-      else if (tier === 'mid') heroTitle.textContent = 'Site profissional sendo montado';
-      else if (tier === 'plus') heroTitle.textContent = 'Projeto básico em evolução';
-      else heroTitle.textContent = 'Construindo seu projeto digital';
-    }
   }
 
   function unlockEvolution(tier) {

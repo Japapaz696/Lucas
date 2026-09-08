@@ -4,13 +4,13 @@
  */
 
 :root {
-  /* Cores principais — paleta escura sofisticada */
-  --bg-deep: #08080b;
-  --bg-base: #0a0a0d;
-  --bg-card: #0f0f14;
-  --bg-card-hover: #12121a;
-  --surface: #14141e;
-  --surface-hover: #181825;
+  /* Cores principais — paleta tecnológica neutra, premium digital */
+  --bg-deep: #05070A;
+  --bg-base: #0B0F14;
+  --bg-card: #111820;
+  --bg-card-hover: #161E2A;
+  --surface: #0F1218;
+  --surface-hover: #131827;
 
   /* Texto */
   --text-main: #f0ede8;
@@ -18,11 +18,11 @@
   --text-muted: #58564f;
   --text-on-dark: #eae7de;
 
-  /* Acento — dourado suave (não neon) */
-  --accent: #bfa374;
-  --accent-soft: rgba(191, 163, 116, 0.12);
-  --accent-border: rgba(191, 163, 116, 0.25);
-  --accent-glow: rgba(191, 163, 116, 0.18);
+  /* Acento — elétrico tecnológico */
+  --accent: #3B82F6;
+  --accent-soft: rgba(59, 130, 246, 0.12);
+  --accent-border: rgba(59, 130, 246, 0.35);
+  --accent-glow: rgba(59, 130, 246, 0.22);
 
   /* Linhas */
   --line-subtle: rgba(255, 255, 255, 0.05);
@@ -30,7 +30,7 @@
 
   /* Tipografia */
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --font-display: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --font-display: 'Space Grotesk', 'Inter', -apple-system, sans-serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', 'SF Mono', monospace;
 
   --text-xs: 0.75rem;
@@ -482,7 +482,7 @@ a { color: inherit; text-decoration: none; }
 }
 .cover-veronica .cover-sub::before { content: 'Psicóloga especialista · Consultório'; }
 .cover-veronica .cover-specialties { display: flex; gap: 4px; margin-top: 4px; flex-wrap: wrap; }
-.cover-veronica .cover-specialties span { font-size: 0.6rem; background: rgba(191,163,116,0.15); border: 1px solid rgba(191,163,116,0.2); padding: 1px 5px; border-radius: 3px; color: rgba(232,224,210,0.8); }
+.cover-veronica .cover-specialties span { font-size: 0.6rem; background: rgba(59,130,246,0.15); border: 1px solid rgba(59,130,246,0.25); padding: 1px 5px; border-radius: 3px; color: rgba(232,224,210,0.8); }
 .cover-veronica .cover-cta { display: inline-block; margin-top: 4px; font-family: var(--font-mono); font-size: 0.65rem; color: var(--accent); text-decoration: none; }
 .cover-veronica .cover-cta:hover { text-decoration: underline; }
 
@@ -501,7 +501,7 @@ a { color: inherit; text-decoration: none; }
 .cover-slots-row { display: flex; justify-content: space-between; gap: 4px; margin-top: 6px; }
 .cover-slot { display: flex; align-items: center; gap: 3px; font-size: 0.55rem; color: rgba(232,224,210,0.6); }
 .slot-dot { width: 6px; height: 6px; border-radius: 50%; display: inline-block; }
-.slot-dot.free { background: rgba(191,163,116,0.4); }
+.slot-dot.free { background: rgba(59,130,246,0.35); }
 .slot-dot.sel { background: var(--accent); box-shadow: 0 0 6px var(--accent-glow); }
 .slot-dot.booked { background: rgba(232,224,210,0.15); }
 .cover-booking-summary { margin-top: 6px; display: flex; justify-content: space-between; font-size: 0.55rem; color: rgba(232,224,210,0.5); }
@@ -631,9 +631,9 @@ a { color: inherit; text-decoration: none; }
 .cover-shop-hero .cover-chip { margin-bottom: 4px; }
 .cover-search { height: 6px; width: 80%; background: rgba(255,255,255,0.08); border-radius: 3px; margin-top: 4px; }
 .cover-products { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-top: 6px; }
-.cover-product { background: rgba(191,163,116,0.05); border: 1px solid rgba(191,163,116,0.1); border-radius: 6px; padding: 4px; }
+.cover-product { background: rgba(59,130,246,0.08); border: 1px solid rgba(59,130,246,0.15); border-radius: 6px; padding: 4px; }
 .cover-thumb { height: 28px; border-radius: 3px; margin-bottom: 4px; }
-.thumb-a { background: linear-gradient(135deg, rgba(191,163,116,0.2) 0%, rgba(10,10,14,0.4) 100%); }
+.thumb-a { background: linear-gradient(135deg, rgba(59,130,246,0.25) 0%, rgba(10,10,14,0.4) 100%); }
 .thumb-b { background: linear-gradient(135deg, rgba(122,148,132,0.2) 0%, rgba(10,10,14,0.4) 100%); }
 .thumb-c { background: linear-gradient(135deg, rgba(232,224,210,0.15) 0%, rgba(10,10,14,0.4) 100%); }
 .cover-pinfo { display: flex; flex-direction: column; margin-bottom: 4px; }
@@ -948,7 +948,7 @@ a { color: inherit; text-decoration: none; }
 }
 
 .summary-premium {
-  background: linear-gradient(135deg, rgba(191,163,116,0.05), rgba(191,163,116,0.02));
+  background: linear-gradient(135deg, rgba(59,130,246,0.08), rgba(191,163,116,0.02));
   border: 1px solid var(--accent-border);
   border-radius: var(--radius-lg);
   padding: 1.25rem 1.5rem;
@@ -1248,16 +1248,23 @@ a { color: inherit; text-decoration: none; }
   transition: all 0.5s var(--ease-out);
 }
 
+/* Animação de construção — quando recursos são adicionados */
+@keyframes buildFadeIn {
+  from { opacity: 0; transform: translateY(12px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes buildSlideRight {
+  from { opacity: 0; transform: translateX(-12px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
 .mini-site-container[data-tier="basic"] .mini-site-header,
 .mini-site-container[data-tier="plus"] .mini-site-header,
 .mini-site-container[data-tier="mid"] .mini-site-header,
 .mini-site-container[data-tier="advanced"] .mini-site-header,
 .mini-site-container[data-tier="premium"] .mini-site-header {
-  opacity: 1;
-  transform: translateY(0);
-  max-height: 60px;
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
+  animation: buildSlideRight 0.55s var(--ease-out) forwards;
 }
 
 .mini-logo {
@@ -1287,7 +1294,7 @@ a { color: inherit; text-decoration: none; }
 .mini-site-hero {
   padding: 2rem 1.5rem;
   text-align: center;
-  background: linear-gradient(180deg, rgba(191,163,116,0.05), transparent);
+  background: linear-gradient(180deg, rgba(59,130,246,0.06), transparent);
   opacity: 0;
   max-height: 0;
   overflow: hidden;
@@ -1421,7 +1428,7 @@ a { color: inherit; text-decoration: none; }
 
 .mini-feature-item {
   padding: 0.5rem 0.8rem;
-  background: rgba(191,163,116,0.05);
+  background: rgba(59,130,246,0.08);
   border-left: 2px solid var(--accent);
   font-size: 0.8rem;
   color: var(--text-secondary);
@@ -1771,7 +1778,7 @@ a { color: inherit; text-decoration: none; }
 }
 
 .contact-info-panel {
-  background: linear-gradient(145deg, rgba(191,163,116,0.08), rgba(15,15,20,0.45));
+  background: linear-gradient(145deg, rgba(59,130,246,0.08), rgba(15,15,20,0.45));
   border: 1px solid var(--accent-border);
   border-radius: var(--radius-xl);
   padding: 2.5rem;
