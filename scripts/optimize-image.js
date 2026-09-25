@@ -2,9 +2,10 @@ const sharp = require('sharp');
 const fs = require('fs');
 const path = require('path');
 
-const inputPath = path.join(__dirname, 'imagens', 'fundo do site.jpg');
-const outputWebp = path.join(__dirname, 'imagens', 'fundo-otimizado.webp');
-const outputJpg = path.join(__dirname, 'imagens', 'fundo-otimizado.jpg');
+const imagesPath = path.join(__dirname, '..', 'imagens');
+const inputPath = path.join(imagesPath, 'fundo do site.jpg');
+const outputWebp = path.join(imagesPath, 'fundo-otimizado.webp');
+const outputJpg = path.join(imagesPath, 'fundo-otimizado.jpg');
 
 async function otimizar() {
   try {
