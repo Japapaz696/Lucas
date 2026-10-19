@@ -3,6 +3,18 @@ node_modules/
 .env.*
 !.env.example
 *.log
+npm-debug.log*
+yarn-error.log*
 .DS_Store
 Thumbs.db
+Desktop.ini
 coverage/
+.idea/
+.vscode/
+*.local
+
+# Capturas de tela e artefatos gerados na máquina local
+screenshot-*.png
+*.local.png
+.playwright-mcp/
+.visual-audit/
