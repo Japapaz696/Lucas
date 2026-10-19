@@ -21,6 +21,8 @@ HTML, CSS e JavaScript. As animações e interações estão em `animations.js`,
 
 Abra `index.html` no navegador ou execute um servidor estático na pasta do projeto.
 
+**Demonstração pública:** [japapaz696.github.io/Lucas](https://japapaz696.github.io/Lucas/).
+
 ## Estrutura
 
 - `index.html` — estrutura e conteúdo;
@@ -31,7 +33,7 @@ Abra `index.html` no navegador ou execute um servidor estático na pasta do proj
 
 ## Observação
 
-O domínio exibido anteriormente no SEO não estava confirmado e foi removido até que exista um deploy público. A sugestão de renomear o repositório para `lucas-dev` permanece como ação manual para preservar URLs existentes.
+A demonstração no GitHub Pages respondeu HTTP 200 na revisão de 5 de outubro de 2026. O domínio comercial e a caixa de e-mail exibidos na interface não foram validados; usar os contatos confirmados do portfólio ao apresentar este estudo. A sugestão de renomear o repositório para `lucas-dev` permanece como ação manual para preservar URLs existentes.
 
 ## Autor
 
