@@ -480,6 +480,8 @@
       toggle.setAttribute('aria-label', 'Abrir menu');
     }
 
+    toggle.setAttribute('aria-expanded', 'false');
+
     toggle.addEventListener('click', function () {
       var open = header.classList.toggle('is-open');
       toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
