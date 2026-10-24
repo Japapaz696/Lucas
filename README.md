@@ -33,7 +33,7 @@ Abra `index.html` no navegador ou execute um servidor estático na pasta do proj
 
 ## Observação
 
-A demonstração no GitHub Pages respondeu HTTP 200 na revisão de 5 de outubro de 2026. O domínio comercial e a caixa de e-mail exibidos na interface não foram validados; usar os contatos confirmados do portfólio ao apresentar este estudo. A sugestão de renomear o repositório para `lucas-dev` permanece como ação manual para preservar URLs existentes.
+A demonstração no GitHub Pages respondeu HTTP 200 na revisão de 5 de outubro de 2026. Contatos comerciais confirmados: WhatsApp +55 31 97340-3545 e e-mail lucaspaz696@gmail.com. Os valores do configurador são estimativas não vinculantes. O projeto Verônica não foi reativado nesta entrega; seus links permanecem apenas como referência, sem ampliação de divulgação. A sugestão de renomear o repositório para `lucas-dev` permanece como ação manual para preservar URLs existentes.
 
 ## Autor
 
