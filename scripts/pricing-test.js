@@ -2,7 +2,8 @@ const fs = require('fs');
 const path = require('path');
 
 // Simulate pricing logic
-eval(fs.readFileSync('C:/Users/Lucas/AppData/Local/Temp/opencode/Lucas/pricing.js', 'utf8'));
+const pricingPath = path.resolve(__dirname, '..', 'pricing.js');
+eval(fs.readFileSync(pricingPath, 'utf8'));
 
 const P = globalThis.LUCAS_PRICING || (typeof window !== 'undefined' ? window.LUCAS_PRICING : null);
 
