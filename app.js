@@ -264,7 +264,7 @@
     var hasDB = features.indexOf('database') !== -1;
 
     // Ajustar conteúdo dinâmico do preview
-    var heroTitle = mock.querySelector('.mini-hero-content h1');
+    var heroTitle = mock.querySelector('.mini-hero-content .mini-hero-title');
     if (heroTitle) {
       if (tier === 'premium') heroTitle.textContent = 'Sistema completo — pronto para operar';
       else if (tier === 'advanced') heroTitle.textContent = 'Projeto avançado em construção';
@@ -425,27 +425,81 @@
     var form = document.getElementById('contact-form');
     if (!form) return;
 
+    var feedbackEl = document.createElement('div');
+    feedbackEl.className = 'contact-form-feedback';
+    feedbackEl.style.display = 'none';
+    feedbackEl.setAttribute('role', 'status');
+    form.appendChild(feedbackEl);
+
+    var whatsappInput = document.getElementById('contact-whatsapp');
+    if (whatsappInput) {
+      whatsappInput.addEventListener('input', function (e) {
+        var v = e.target.value.replace(/\D/g, '');
+        if (v.length > 11) v = v.slice(0, 11);
+        if (v.length > 6) {
+          e.target.value = '(' + v.slice(0, 2) + ') ' + v.slice(2, 7) + '-' + v.slice(7);
+        } else if (v.length > 2) {
+          e.target.value = '(' + v.slice(0, 2) + ') ' + v.slice(2);
+        } else if (v.length > 0) {
+          e.target.value = '(' + v;
+        }
+      });
+    }
+
     form.addEventListener('submit', function (e) {
       e.preventDefault();
-      var name = (document.getElementById('contact-name') || {}).value || '';
-      var whatsapp = (document.getElementById('contact-whatsapp') || {}).value || '';
+      var nameEl = document.getElementById('contact-name');
+      var whatsappEl = document.getElementById('contact-whatsapp');
       var typeSel = document.getElementById('contact-project-type');
+      var messageEl = document.getElementById('contact-message');
+
+      var name = nameEl ? nameEl.value.trim() : '';
+      var whatsapp = whatsappEl ? whatsappEl.value.trim() : '';
       var typeLabel = typeSel && typeSel.options[typeSel.selectedIndex]
         ? typeSel.options[typeSel.selectedIndex].text
         : '';
-      var message = (document.getElementById('contact-message') || {}).value || '';
+      var message = messageEl ? messageEl.value.trim() : '';
+
+      if (!name || !whatsapp || !message) {
+        feedbackEl.textContent = 'Por favor, preencha todos os campos obrigatórios.';
+        feedbackEl.className = 'contact-form-feedback error';
+        feedbackEl.style.display = 'block';
+        return;
+      }
 
       var lines = [
         'Olá Lucas, quero um orçamento.',
-        name ? 'Nome: ' + name.trim() : '',
-        whatsapp ? 'WhatsApp: ' + whatsapp.trim() : '',
+        name ? 'Nome: ' + name : '',
+        whatsapp ? 'WhatsApp: ' + whatsapp : '',
         typeLabel && typeSel.value ? 'Tipo: ' + typeLabel : '',
         '',
-        message ? 'Mensagem:\n' + message.trim().slice(0, 800) : '',
+        message ? 'Mensagem:\n' + message.slice(0, 800) : '',
       ].filter(Boolean);
 
       var url = 'https://wa.me/' + P.WHATSAPP + '?text=' + encodeURIComponent(lines.join('\n'));
+
+      feedbackEl.textContent = 'Redirecionando para o WhatsApp com os dados da sua solicitação...';
+      feedbackEl.className = 'contact-form-feedback success';
+      feedbackEl.style.display = 'block';
+
       window.open(url, '_blank', 'noopener');
+    });
+  }
+
+  function setupMiniContactForm() {
+    var miniForm = document.querySelector('.mini-contact-form');
+    if (!miniForm) return;
+
+    var miniFeedback = document.createElement('div');
+    miniFeedback.className = 'mini-form-feedback';
+    miniFeedback.style.display = 'none';
+    miniFeedback.setAttribute('role', 'status');
+    miniForm.appendChild(miniFeedback);
+
+    miniForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      miniFeedback.textContent = 'Demonstração: este formulário é uma prévia do seu futuro site. Para enviar seu orçamento real com os recursos configurados, utilize o botão "SOLICITAR NO WHATSAPP" logo abaixo ou o formulário oficial ao final da página.';
+      miniFeedback.style.display = 'block';
     });
   }
 
@@ -498,6 +552,7 @@
   setupWhatsApp();
   setupAI();
   setupContactForm();
+  setupMiniContactForm();
   setupMenu();
   render();
 })();

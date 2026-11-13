@@ -10,10 +10,21 @@
 
     <!-- Open Graph -->
     <meta property="og:title" content="Lucas — Sites, Sistemas e Soluções Digitais">
-    <meta property="og:description" content="Desenvolvimento de sites profissionais, sistemas web e integrações inteligentes.">
+    <meta property="og:description" content="Desenvolvimento de sites profissionais, sistemas web e integrações inteligentes. Orçamento interativo com preço em tempo real.">
     <meta property="og:type" content="website">
+    <meta property="og:url" content="https://japapaz696.github.io/Lucas/">
+    <meta property="og:image" content="https://japapaz696.github.io/Lucas/imagens/fundo-otimizado.jpg">
     <meta property="og:locale" content="pt_BR">
     <meta property="og:site_name" content="Lucas — Desenvolvimento Web">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Lucas — Sites, Sistemas e Soluções Digitais">
+    <meta name="twitter:description" content="Desenvolvimento de sites profissionais, sistemas web e integrações inteligentes. Orçamento interativo com estimativa em tempo real.">
+    <meta name="twitter:image" content="https://japapaz696.github.io/Lucas/imagens/fundo-otimizado.jpg">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://japapaz696.github.io/Lucas/">
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="imagens/favicon.svg">
@@ -50,9 +61,9 @@
     <!-- Header -->
     <header class="header" role="banner">
         <div class="header-inner">
-            <div class="logo-mark" title="Página inicial">
+            <a href="#home" class="logo-mark" aria-label="Lucas — Início">
                 Lucas
-            </div>
+            </a>
             <button class="mobile-menu-toggle" aria-label="Abrir menu" aria-expanded="false">
                 <span></span>
                 <span></span>
@@ -70,7 +81,7 @@
     </header>
 
     <!-- Hero -->
-    <section id="home" class="hero" role="banner" aria-label="Abertura da página">
+    <section id="home" class="hero" aria-label="Abertura da página">
         <img src="imagens/fundo-otimizado.webp" alt="" class="hero-bg-img" loading="eager" onerror="this.src='imagens/fundo-otimizado.jpg'">
         <div class="hero-bg-overlay" aria-hidden="true"></div>
 
@@ -155,22 +166,22 @@
         <div class="steps-row">
             <div class="step-item" data-reveal data-reveal-delay="0.4">
                 <div class="step-num">1</div>
-                <h4>Você monta o projeto</h4>
+                <h3>Você monta o projeto</h3>
                 <p>Use o orçamento interativo para escolher tipo, páginas e funcionalidades. Ou descreva livremente como imagina.</p>
             </div>
             <div class="step-item" data-reveal data-reveal-delay="0.5">
                 <div class="step-num">2</div>
-                <h4>Apresento a solução</h4>
+                <h3>Apresento a solução</h3>
                 <p>Releio sua descrição, afino o escopo e envio uma proposta clara com cronograma e etapas definidas.</p>
             </div>
             <div class="step-item" data-reveal data-reveal-delay="0.6">
                 <div class="step-num">3</div>
-                <h4>Desenvolvo</h4>
+                <h3>Desenvolvo</h3>
                 <p>Código limpo, testes funcionais e comunicação direta durante toda a implementação. Você acompanha o progresso.</p>
             </div>
             <div class="step-item" data-reveal data-reveal-delay="0.7">
                 <div class="step-num">4</div>
-                <h4>Entrego</h4>
+                <h3>Entrego</h3>
                 <p>Projeto funcional, documentação básica e suporte por 30 dias. Treinamento opcional para sua equipe.</p>
             </div>
         </div>
@@ -301,7 +312,7 @@
 
                 <!-- Resumo visual premium -->
                 <div class="project-summary" id="project-summary">
-                    <h4>Seu Projeto</h4>
+                    <h3>Seu Projeto</h3>
                     <div class="summary-premium">
                         <div class="summary-header">
                             <span class="summary-type-label" id="summary-type-label">Projeto</span>
@@ -326,7 +337,8 @@
                 <div class="ai-box" id="ai-assist-box">
                     <h3>Não sabe por onde começar?</h3>
                     <p class="ai-intro">Conte rapidamente sua ideia e deixe o configurador sugerir uma estrutura.</p>
-                    <textarea id="ai-description" placeholder="Ex: site para minha clínica com agendamento e confirmação pelo WhatsApp" rows="3" maxlength="1000"></textarea>
+                    <label for="ai-description" class="visually-hidden">Descreva a ideia do seu projeto para sugestão assistida por IA</label>
+                    <textarea id="ai-description" placeholder="Ex: site para minha clínica com agendamento e confirmação pelo WhatsApp" rows="3" maxlength="1000" aria-label="Descreva a ideia do seu projeto para sugestão assistida por IA"></textarea>
                     <button class="btn-primary" type="button" id="ai-suggest-btn">Sugerir estrutura</button>
                     <div id="ai-result" class="ai-result-card" aria-live="polite"></div>
                 </div>
@@ -350,7 +362,7 @@
 
                     <div id="mini-hero" class="mini-site-hero">
                         <div class="mini-hero-content">
-                            <h1>Construindo seu projeto digital</h1>
+                            <div class="mini-hero-title">Construindo seu projeto digital</div>
                             <p>Seu site está tomando forma conforme você escolhe os recursos</p>
                             <div class="mini-progress-indicator">
                                 <span>Nível de projeto: <strong id="mini-tier-label">Nenhum</strong></span>
@@ -510,7 +522,7 @@
                         <div class="cover-nav"><span></span><span></span></div>
                         <div class="cover-hero-text">
                             <div class="cover-chip">Psicologia</div>
-                            <h4 class="cover-title-text">Psicóloga especialista</h4>
+                            <div class="cover-title-text">Psicóloga especialista</div>
                             <p class="cover-sub">Consultório · Atendimento online · Agendamento via WhatsApp</p>
                         </div>
                         <div class="cover-specialties">
@@ -651,7 +663,7 @@
                     <h3>Loja Com Produtos e Carrinho</h3>
                     <p class="project-meta">E-commerce • Pagamento • Catálogo</p>
                     <p>Catálogo de produtos, página individual, carrinho de compras e integração com pagamento. Responsivo, com busca, filtros e checkout simplificado.</p>
-                    <a href="#orcamento" class="project-link" target="_blank" rel="noopener">
+                    <a href="#orcamento" class="project-link">
                         Ver projeto <span>→</span>
                     </a>
                 </div>
