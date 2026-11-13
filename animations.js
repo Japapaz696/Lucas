@@ -43,14 +43,25 @@ class SiteLucasAnimations {
     const links = document.querySelectorAll('a[href^="#"]');
     links.forEach(link => {
       link.addEventListener('click', (e) => {
-        const target = document.querySelector(link.getAttribute('href'));
-        if (target) {
+        const href = link.getAttribute('href');
+        if (!href) return;
+        if (href === '#' || href.length <= 1) {
           e.preventDefault();
-          const offsetTop = target.offsetTop - 70;
-          window.scrollTo({
-            top: offsetTop,
-            behavior: 'smooth'
-          });
+          return;
+        }
+
+        try {
+          const target = document.querySelector(href);
+          if (target) {
+            e.preventDefault();
+            const offsetTop = target.offsetTop - 70;
+            window.scrollTo({
+              top: offsetTop,
+              behavior: 'smooth'
+            });
+          }
+        } catch (err) {
+          // Ignora seletores inválidos e mantém navegação padrão segura
         }
       });
     });
@@ -104,10 +115,11 @@ class SiteLucasAnimations {
   }
 }
 
-// Parallax leve no hero (desktop only)
+// Parallax suave no hero (desktop only, com throttle via requestAnimationFrame)
 class Parallax {
   constructor() {
-    this.isDesktop = window.matchMedia('(hover: hover)').matches && !window.matchMedia('(max-width: 768px)').matches;
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    this.isDesktop = !prefersReducedMotion && window.matchMedia('(hover: hover)').matches && !window.matchMedia('(max-width: 768px)').matches;
     if (!this.isDesktop) return;
     this.init();
   }
@@ -116,13 +128,23 @@ class Parallax {
     const hero = document.querySelector('.hero');
     if (!hero) return;
 
-    const bg = hero.querySelector('.hero-bg-img') || hero;
+    const bg = hero.querySelector('.hero-bg-img');
+    if (!bg) return;
 
-    window.addEventListener('scroll', (e) => {
-      const scrolled = window.pageYOffset;
-      const rate = scrolled * 0.3;
-      bg.style.setProperty('--parallax-y', `${rate}px`);
-    });
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const scrolled = window.pageYOffset;
+          if (scrolled <= hero.offsetHeight) {
+            const rate = scrolled * 0.25;
+            bg.style.transform = `translate3d(0, ${rate}px, 0)`;
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
   }
 }
 
