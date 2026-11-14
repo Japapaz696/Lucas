@@ -5,20 +5,24 @@
 
 class SiteLucasAnimations {
   constructor() {
-    this.revealElements = [];
     this.init();
   }
 
   init() {
     this.setupReveal();
     this.setupSmoothScroll();
-    this.setupHoverEffects();
     this.setupPriceAnimation();
   }
 
   setupReveal() {
     const elements = document.querySelectorAll('[data-reveal]');
     if (!elements.length) return;
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion || !('IntersectionObserver' in window)) {
+      elements.forEach(el => el.classList.add('revealed'));
+      return;
+    }
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -67,19 +71,6 @@ class SiteLucasAnimations {
     });
   }
 
-  setupHoverEffects() {
-    // Cards com efeito de levantamento
-    const cards = document.querySelectorAll('.project-card, .service-card');
-    cards.forEach(card => {
-      card.addEventListener('mouseenter', () => {
-        card.style.transform = 'translateY(-6px)';
-      });
-      card.addEventListener('mouseleave', () => {
-        card.style.transform = 'translateY(0)';
-      });
-    });
-  }
-
   setupPriceAnimation() {
     // Animação do preço quando o valor muda
     const display = document.getElementById('price-display');
@@ -103,9 +94,9 @@ class SiteLucasAnimations {
 
   // Anima contador de forma fluida
   animateCount(element, start, end, duration = 1000) {
-    const startTimestamp = null;
+    let startTimestamp = null;
     const step = (timestamp) => {
-      if (!startTimestamp) startTimestamp = timestamp;
+      if (startTimestamp === null) startTimestamp = timestamp;
       const progress = Math.min((timestamp - startTimestamp) / duration, 1);
       const value = Math.floor(progress * (end - start) + start);
       element.textContent = value.toLocaleString('pt-BR');

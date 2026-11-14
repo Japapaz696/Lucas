@@ -1,39 +1,65 @@
 # Lucas Dev — Sites, Sistemas e Soluções Digitais
 
-Landing page demonstrativa de serviços de desenvolvimento web, interfaces, sistemas e soluções digitais.
-
-## Sobre o projeto
-
-O site apresenta serviços, projetos visuais e um configurador interativo de orçamento. É um projeto front-end: os formulários e estimativas funcionam como demonstrações no navegador e não constituem um sistema comercial ou de pagamento em produção.
+Landing page responsiva para apresentar serviços de desenvolvimento web, projetos demonstrativos e um configurador interativo de orçamento.
 
 ## Tecnologias
 
-HTML, CSS e JavaScript. As animações e interações estão em `animations.js`, `app.js` e `pricing.js`.
+- HTML5 semântico;
+- CSS3, incluindo layout responsivo, animações e suporte a movimento reduzido;
+- JavaScript puro, sem framework, etapa de build ou dependência de runtime;
+- Google Fonts carregadas pela rede (Inter, Space Grotesk e JetBrains Mono).
 
 ## Funcionalidades
 
-- layout responsivo;
-- seções de serviços e projetos;
-- configurador visual de orçamento;
-- links de contato e chamadas para WhatsApp.
+- seções de serviços, processo, portfólio, orçamento e contato;
+- navegação responsiva com menu mobile;
+- configurador com sete tipos de projeto, páginas, recursos, integrações, IA, automações e adicionais;
+- cálculo de estimativa, slider de faixa, resumo e prévia visual progressiva do projeto;
+- sugestões locais de estrutura baseadas na descrição do projeto, sem chamada a uma API de IA;
+- formulário de contato com validação e composição de uma mensagem para abrir no WhatsApp;
+- formulário do mini-site apenas demonstrativo: exibe orientação na página e não envia os dados;
+- efeitos de entrada ao rolar e parallax do hero em dispositivos desktop que não solicitam movimento reduzido.
+
+Os valores são estimativas não vinculantes. Os previews de sites e sistemas são ilustrativos. O projeto Verônica não foi reativado e não possui link funcional para uma página externa.
 
 ## Como executar
 
-Abra `index.html` no navegador ou execute um servidor estático na pasta do projeto.
+Não há instalação de dependências. Na pasta do projeto, inicie um servidor estático:
 
-**Demonstração pública:** [japapaz696.github.io/Lucas](https://japapaz696.github.io/Lucas/).
+```powershell
+python -m http.server 8000
+```
+
+Abra <http://127.0.0.1:8000/> no navegador. Encerre o servidor com `Ctrl+C` no terminal em que ele está rodando.
+
+## Testes disponíveis
+
+```powershell
+node scripts/pricing-test.js
+node --check app.js
+node --check animations.js
+node --check pricing.js
+```
+
+O script `scripts/pricing-test.js` cobre os casos básicos de cálculo e mensagem de orçamento. Os demais comandos verificam sintaxe JavaScript.
 
 ## Estrutura
 
-- `index.html` — estrutura e conteúdo;
-- `styles.css` — estilos responsivos;
-- `app.js`, `pricing.js`, `animations.js` — comportamentos da interface;
-- `imagens/` — imagens do projeto;
-- `scripts/` — utilitários de manutenção.
+- `index.html` — conteúdo e estrutura da página;
+- `styles.css` — tokens visuais, componentes e breakpoints responsivos;
+- `app.js` — estado do configurador, formulários, navegação e integração com WhatsApp;
+- `pricing.js` — regras de estimativa e sugestões baseadas em texto;
+- `animations.js` — rolagem, revelação por IntersectionObserver e parallax;
+- `imagens/` — imagens e favicon;
+- `scripts/` — teste de preços e utilitário de otimização de imagem.
 
-## Observação
+## Demonstração e contato
 
-A demonstração no GitHub Pages respondeu HTTP 200 na revisão de 5 de outubro de 2026. Contatos comerciais confirmados: WhatsApp +55 31 97340-3545 e e-mail lucaspaz696@gmail.com. Os valores do configurador são estimativas não vinculantes. O projeto Verônica não foi reativado nesta entrega; seus links permanecem apenas como referência, sem ampliação de divulgação. A sugestão de renomear o repositório para `lucas-dev` permanece como ação manual para preservar URLs existentes.
+Demonstração pública: [japapaz696.github.io/Lucas](https://japapaz696.github.io/Lucas/). A página, a imagem de compartilhamento e o favicon responderam HTTP 200 em 13 de novembro de 2026.
+
+Contatos exibidos no site: WhatsApp +55 31 97340-3545 e e-mail <lucaspaz696@gmail.com>. Confirme disponibilidade e valores diretamente com o responsável.
+
+O repositório continua em `Japapaz696/Lucas`; uma possível renomeação para `lucas-dev` permanece como decisão manual, pois poderia alterar URLs existentes.
 
 ## Autor
 

@@ -358,6 +358,18 @@
   }
 
   function setupButtons() {
+    var radioGroup = document.querySelector('[role="radiogroup"]');
+    var radioButtons = radioGroup
+      ? Array.from(radioGroup.querySelectorAll('[role="radio"]'))
+      : [];
+    var initialRadio = radioButtons.find(function (button) {
+      return button.getAttribute('aria-checked') === 'true';
+    }) || radioButtons[0];
+
+    radioButtons.forEach(function (button) {
+      button.tabIndex = button === initialRadio ? 0 : -1;
+    });
+
     document.querySelectorAll('.option-btn').forEach(function (btn) {
       btn.addEventListener('click', function () {
         var isType = btn.hasAttribute('data-type');
@@ -365,9 +377,11 @@
           document.querySelectorAll('.option-btn[data-type]').forEach(function (other) {
             other.classList.remove('selected');
             other.setAttribute('aria-checked', 'false');
+            other.tabIndex = -1;
           });
           btn.classList.add('selected');
           btn.setAttribute('aria-checked', 'true');
+          btn.tabIndex = 0;
         } else {
           var on = !btn.classList.contains('selected');
           btn.classList.toggle('selected', on);
@@ -376,6 +390,30 @@
         render();
       });
     });
+
+    if (radioGroup && radioButtons.length) {
+      radioGroup.addEventListener('keydown', function (event) {
+        var currentIndex = radioButtons.indexOf(document.activeElement);
+        if (currentIndex < 0) return;
+
+        var nextIndex = currentIndex;
+        if (event.key === 'ArrowRight' || event.key === 'ArrowDown') {
+          nextIndex = (currentIndex + 1) % radioButtons.length;
+        } else if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') {
+          nextIndex = (currentIndex - 1 + radioButtons.length) % radioButtons.length;
+        } else if (event.key === 'Home') {
+          nextIndex = 0;
+        } else if (event.key === 'End') {
+          nextIndex = radioButtons.length - 1;
+        } else {
+          return;
+        }
+
+        event.preventDefault();
+        radioButtons[nextIndex].focus();
+        radioButtons[nextIndex].click();
+      });
+    }
   }
 
   function setupSlider() {

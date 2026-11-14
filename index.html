@@ -22,6 +22,7 @@
     <meta name="twitter:title" content="Lucas — Sites, Sistemas e Soluções Digitais">
     <meta name="twitter:description" content="Desenvolvimento de sites profissionais, sistemas web e integrações inteligentes. Orçamento interativo com estimativa em tempo real.">
     <meta name="twitter:image" content="https://japapaz696.github.io/Lucas/imagens/fundo-otimizado.jpg">
+    <meta name="twitter:url" content="https://japapaz696.github.io/Lucas/">
 
     <!-- Canonical URL -->
     <link rel="canonical" href="https://japapaz696.github.io/Lucas/">
@@ -64,12 +65,12 @@
             <a href="#home" class="logo-mark" aria-label="Lucas — Início">
                 Lucas
             </a>
-            <button class="mobile-menu-toggle" aria-label="Abrir menu" aria-expanded="false">
+            <button class="mobile-menu-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="main-navigation">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
-            <nav class="nav-links" role="navigation" aria-label="Navegação principal">
+            <nav id="main-navigation" class="nav-links" role="navigation" aria-label="Navegação principal">
                 <a href="#home" class="nav-link" data-section="home">Início</a>
                 <a href="#servicos" class="nav-link" data-section="servicos">Serviços</a>
                 <a href="#como-funciona" class="nav-link" data-section="como-funciona">Como Funciona</a>
@@ -338,7 +339,7 @@
                     <h3>Não sabe por onde começar?</h3>
                     <p class="ai-intro">Conte rapidamente sua ideia e deixe o configurador sugerir uma estrutura.</p>
                     <label for="ai-description" class="visually-hidden">Descreva a ideia do seu projeto para sugestão assistida por IA</label>
-                    <textarea id="ai-description" placeholder="Ex: site para minha clínica com agendamento e confirmação pelo WhatsApp" rows="3" maxlength="1000" aria-label="Descreva a ideia do seu projeto para sugestão assistida por IA"></textarea>
+                    <textarea id="ai-description" placeholder="Ex: site para minha clínica com agendamento e confirmação pelo WhatsApp" rows="3" maxlength="1000"></textarea>
                     <button class="btn-primary" type="button" id="ai-suggest-btn">Sugerir estrutura</button>
                     <div id="ai-result" class="ai-result-card" aria-live="polite"></div>
                 </div>
@@ -347,16 +348,16 @@
             <!-- Mini-site do projeto (evolutivo) -->
             <div class="project-preview-panel" data-reveal data-reveal-delay="0.5">
                 <h3>Seu projeto visual</h3>
-                <div id="mini-site-container" class="mini-site-container" data-tier="empty">
+                <div id="mini-site-container" class="mini-site-container" data-tier="empty" role="region" aria-label="Prévia visual do projeto configurado">
                     <div class="mini-empty-state">
                         <span>Arraste o controle para ver o site nascer</span>
                     </div>
                     <div id="mini-header" class="mini-site-header">
                         <div class="mini-logo">Lucas</div>
                         <nav class="mini-nav">
-                            <a href="#home" class="mini-nav-link">Início</a>
-                            <a href="#servicos" class="mini-nav-link">Serviços</a>
-                            <a href="#orcamento" class="mini-nav-link">Orçamento</a>
+                            <span class="mini-nav-link">Início</span>
+                            <span class="mini-nav-link">Serviços</span>
+                            <span class="mini-nav-link">Orçamento</span>
                         </nav>
                     </div>
 
@@ -371,7 +372,7 @@
                     </div>
 
                     <div id="mini-services" class="mini-site-services">
-                        <h2>Serviços</h2>
+                        <div class="mini-section-title">Serviços</div>
                         <div class="mini-services-grid">
                             <div class="mini-service-item">Landing Pages</div>
                             <div class="mini-service-item">Sites Profissionais</div>
@@ -380,7 +381,7 @@
                     </div>
 
                     <div id="mini-features" class="mini-site-features">
-                        <h2>Recursos principais</h2>
+                        <div class="mini-section-title">Recursos principais</div>
                         <div class="mini-features-list">
                             <div class="mini-feature-item">Responsividade</div>
                             <div class="mini-feature-item">Botão WhatsApp</div>
@@ -407,7 +408,7 @@
                     </div>
 
                     <div id="mini-form-section" class="mini-site-form-section">
-                        <h2>Entre em contato</h2>
+                        <div class="mini-section-title">Entre em contato</div>
                         <form class="mini-contact-form">
                             <div class="form-group">
                                 <label for="mini-name">Nome</label>
@@ -437,7 +438,7 @@
                     </div>
 
                     <div id="mini-contact-info" class="mini-site-contact-info">
-                        <h2>Contate-nos</h2>
+                        <div class="mini-section-title">Contate-nos</div>
                         <div class="mini-contact-details">
                             <div class="mini-contact-item">
                                 <strong>Email:</strong> lucaspaz696@gmail.com
@@ -455,10 +456,10 @@
                         <div class="mini-footer-content">
                             <p>© 2026 Lucas — Desenvolvimento Web</p>
                             <div class="mini-footer-links">
-                                <a href="#home">Início</a>
-                                <a href="#servicos">Serviços</a>
-                                <a href="#orcamento">Orçamento</a>
-                                <a href="#contato">Contato</a>
+                                <span>Início</span>
+                                <span>Serviços</span>
+                                <span>Orçamento</span>
+                                <span>Contato</span>
                             </div>
                         </div>
                     </div>
@@ -479,18 +480,18 @@
                 <div class="evolution-tracker">
                     <h4>Seu site está sendo construído</h4>
                     <div class="evolution-list">
-                        <div class="evolution-item" id="evo-header">✓ Estrutura inicial</div>
-                        <div class="evolution-item" id="evo-responsive">✓ Design responsivo</div>
-                        <div class="evolution-item" id="evo-hero">✓ Hero</div>
-                        <div class="evolution-item" id="evo-services">✓ Serviços</div>
-                        <div class="evolution-item" id="evo-features">✓ Recursos</div>
-                        <div class="evolution-item" id="evo-cards">✓ Cards / conteúdo</div>
-                        <div class="evolution-item" id="evo-form">✓ Formulário</div>
-                        <div class="evolution-item" id="evo-contact">✓ Contato</div>
-                        <div class="evolution-item" id="evo-whatsapp">✓ WhatsApp</div>
-                        <div class="evolution-item" id="evo-seo">✓ SEO</div>
-                        <div class="evolution-item" id="evo-booking">✓ Agendamento</div>
-                        <div class="evolution-item" id="evo-footer">✓ Rodapé</div>
+                        <div class="evolution-item" id="evo-header">Estrutura inicial</div>
+                        <div class="evolution-item" id="evo-responsive">Design responsivo</div>
+                        <div class="evolution-item" id="evo-hero">Hero</div>
+                        <div class="evolution-item" id="evo-services">Serviços</div>
+                        <div class="evolution-item" id="evo-features">Recursos</div>
+                        <div class="evolution-item" id="evo-cards">Cards / conteúdo</div>
+                        <div class="evolution-item" id="evo-form">Formulário</div>
+                        <div class="evolution-item" id="evo-contact">Contato</div>
+                        <div class="evolution-item" id="evo-whatsapp">WhatsApp</div>
+                        <div class="evolution-item" id="evo-seo">SEO</div>
+                        <div class="evolution-item" id="evo-booking">Agendamento</div>
+                        <div class="evolution-item" id="evo-footer">Rodapé</div>
                     </div>
                 </div>
 
@@ -517,7 +518,7 @@
         <div class="project-grid">
             <!-- Site Veronica — consultório/psicologia -->
             <article class="project-card" data-reveal data-reveal-delay="0.4">
-                <div class="project-cover cover-veronica">
+                <div class="project-cover cover-veronica" aria-hidden="true" inert>
                     <div class="cover-inner">
                         <div class="cover-nav"><span></span><span></span></div>
                         <div class="cover-hero-text">
@@ -548,7 +549,7 @@
 
             <!-- Sistema de Agendamento -->
             <article class="project-card" data-reveal data-reveal-delay="0.5">
-                <div class="project-cover cover-agendamento">
+                <div class="project-cover cover-agendamento" aria-hidden="true" inert>
                     <div class="cover-inner">
                         <div class="cover-nav"><span></span><span></span><span></span></div>
                         <div class="cover-agenda-full">
@@ -620,7 +621,7 @@
 
             <!-- Loja Virtual -->
             <article class="project-card" data-reveal data-reveal-delay="0.6">
-                <div class="project-cover cover-loja">
+                <div class="project-cover cover-loja" aria-hidden="true" inert>
                     <div class="cover-inner">
                         <div class="cover-nav"><span></span><span></span><span></span></div>
                         <div class="cover-shop-hero">
